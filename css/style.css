@@ -1,0 +1,105 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Roboto", sans-serif;
+  background-color: #1a1a1a;
+  color: #ffffff;
+  line-height: 1.6;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+.container header {
+  text-align: center;
+  margin-bottom: 40px;
+  padding: 20px 0;
+}
+.container header h1 {
+  font-size: 5rem;
+  color: #9147ff;
+  margin-bottom: 10px;
+  font-family: "Monoton", cursive;
+}
+.container header p {
+  font-size: 2rem;
+  color: #cccccc;
+}
+
+.search-section {
+  margin-bottom: 30px;
+}
+.search-section #search-form .search-container {
+  display: flex;
+  gap: 10px;
+  max-width: 600px;
+  margin: 0 auto;
+}
+.search-section #search-form .search-container #search-input {
+  flex: 1;
+  padding: 12px 15px;
+  border: 3px solid #9147ff;
+  border-radius: 5px;
+  background: #2a2a2a;
+  color: #ffffff;
+  font-size: 1rem;
+}
+.search-section #search-form .search-container #search-input::-moz-placeholder {
+  color: #cccccc;
+}
+.search-section #search-form .search-container #search-input::placeholder {
+  color: #cccccc;
+}
+.search-section #search-form .search-container #search-input:focus {
+  outline: none;
+  border-color: #ae7af8;
+  box-shadow: 0 0 10px rgba(145, 71, 255, 0.3);
+}
+.search-section #search-form .search-container #search-btn {
+  padding: 12px 30px;
+  background-color: #9147ff;
+  color: #ffffff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+.search-section #search-form .search-container #search-btn:hover {
+  background-color: rgb(90.0869565217, 0, 224);
+}
+.search-section #search-form .search-container #search-btn:active {
+  transform: scale(0.98);
+}
+
+.status-section {
+  text-align: center;
+  margin-bottom: 20px;
+  min-height: 30px;
+}
+.status-section #status-message {
+  color: #cccccc;
+  font-size: 1rem;
+}
+
+.results-section {
+  min-height: 200px;
+}
+
+footer {
+  text-align: center;
+  padding: 30px 0;
+  margin-top: 50px;
+  border-top: 1px solid #2a2a2a;
+}
+footer p {
+  color: #cccccc;
+  font-size: 0.9rem;
+}/*# sourceMappingURL=style.css.map */

@@ -4,23 +4,49 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Giphy Search Engine</title>
-    <link rel="stylesheet" href="css/styles.css">
+
+    <!-- Google Font - Monoton and Roboto -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Monoton&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <header>
-        <h1>Giphy Search</h1>
-    </header>
+    <div class="container">
+        <header>
+            <h1>Giphy Search</h1>
+            <p>Find the perfect GIF for any occasion</p>
+        </header>
 
-    <main>
-        <section class="search-section">
-            <input type="text" id="search-input" placeholder="Search for GIFs...">
-            <button id="search-button">Search</button>
-        </section>
+        <main>
+            <section class="search-section">
+                <form id="search-form">
+                    <div class="search-container">
+                        <input 
+                            type="text" 
+                            id="search-input" 
+                            placeholder="Search for GIFs..."
+                            required
+                        >
+                        <button type="submit" id="search-btn">Search</button>
+                    </div>
+                </form>
+            </section>
 
-        <section id="results" class="results-section">
-            <!-- Search results will be displayed here -->
-        </section>
-    </main>
+            <section class="status-section">
+                <p id="status-message"></p>
+            </section>
+
+            <section id="results" class="results-section">
+                <!-- Search results will be displayed here -->
+            </section>
+        </main>
+
+        <footer>
+            <p>Powered by Giphy API</p>
+        </footer>
+    </div>
     
     <script src="js/main.js"></script>
 </body>
