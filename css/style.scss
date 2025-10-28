@@ -20,6 +20,7 @@ body {
     background-color: $bg-color;
     color: $text-color;
     line-height: 1.6;
+    min-height: 100vh;
 }
 
 // Container
@@ -27,6 +28,9 @@ body {
     max-width: 1200px;
     margin: 0 auto;
     padding: 20px;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
 
     header {
         text-align: center;
@@ -38,6 +42,7 @@ body {
             color: $primary-color;
             margin-bottom: 10px;
             font-family: $font-heading;
+            letter-spacing: 3px;
         }
 
         p {
@@ -158,8 +163,8 @@ body {
 // Custom Grid Classes using Flex
 .col-3 {
     // 4 columns on desktop (100% / 4 = 25% minus gap)
-    flex: 0 0 calc(25% - 12px);
-    max-width: calc(25% - 12px);
+    flex: 0 0 calc(25% - 15px);
+    max-width: calc(25% - 15px);
 }
 
 // Individual GIF Item
@@ -201,6 +206,7 @@ body {
     }
 
     .container header {
+        margin-bottom: 5px;
         h1 {
             font-size: 2rem;
             letter-spacing: 2px;
@@ -212,22 +218,36 @@ body {
     }
 
     .search-section {
+        margin-bottom: 5px;
         #search-form {
             .search-container {
                 flex-direction: row;
 
                 #search-input {
-                    width: 100%;
+                    flex: 1;
+                    width: auto;
                 }
 
                 #search-btn {
-                    width: 10%;
+                    width: 50px;
+                    height: 50px;
+                    padding: 0;
                     font-size: 0;
-                }
+                    position: relative;
+                    flex-shrink: 0;
 
-                #search-btn::before {
-                    content: '🔍';
-                    font-size: 1.2rem;
+                    &::before {
+                        content: '';
+                        position: absolute;
+                        top: 50%;
+                        left: 50%;
+                        transform: translate(-50%, -50%);
+                        width: 1.5rem;
+                        height: 1.5rem;
+                        background: url("../images/magnifying-glass.svg") no-repeat center center;
+                        background-size: contain;
+                        filter: brightness(0) invert(1);
+                    }
                 }
             }
         }
@@ -247,11 +267,22 @@ body {
 footer {
     text-align: center;
     padding: 30px 0;
-    margin-top: 50px;
+    margin-top: auto;
     border-top: 1px solid $card-bg;
 
     p {
         color: $text-muted;
         font-size: 0.9rem;
+
+        a {
+            color: $primary-color;
+            text-decoration: none;
+            transition: color 0.3s ease;
+
+            &:hover {
+                color: $secondary-color;
+                text-decoration: underline;
+            }
+        }
     }
 }
