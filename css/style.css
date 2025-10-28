@@ -1,3 +1,4 @@
+@charset "UTF-8";
 * {
   margin: 0;
   padding: 0;
@@ -87,6 +88,27 @@ body {
 .status-section #status-message {
   color: #cccccc;
   font-size: 1rem;
+  padding: 10px;
+  border-radius: 5px;
+  transition: all 0.3s ease;
+}
+.status-section #status-message.loading {
+  color: #ae7af8;
+  font-weight: 500;
+}
+.status-section #status-message.success {
+  color: #4caf50;
+  font-weight: 500;
+}
+.status-section #status-message.error {
+  color: #ff5252;
+  font-weight: 500;
+}
+
+#search-btn:disabled {
+  background-color: rgb(90.0869565217, 0, 224);
+  cursor: not-allowed;
+  opacity: 0.6;
 }
 
 .results-section {
@@ -131,10 +153,10 @@ body {
 
 @media (max-width: 768px) {
   .col-3 {
-    flex: 0 0 100%;
-    max-width: 100%;
+    flex: 0 0 calc(50% - 10px);
+    max-width: calc(50% - 10px);
   }
-  .gif-item:nth-child(n+3) {
+  .gif-item:nth-child(n+5) {
     display: none;
   }
   .container header h1 {
@@ -145,13 +167,18 @@ body {
     font-size: 1rem;
   }
   .search-section #search-form .search-container {
-    flex-direction: column;
+    flex-direction: row;
   }
   .search-section #search-form .search-container #search-input {
     width: 100%;
   }
   .search-section #search-form .search-container #search-btn {
-    width: 100%;
+    width: 10%;
+    font-size: 0;
+  }
+  .search-section #search-form .search-container #search-btn::before {
+    content: "🔍";
+    font-size: 1.2rem;
   }
 }
 @media (min-width: 769px) and (max-width: 1024px) {

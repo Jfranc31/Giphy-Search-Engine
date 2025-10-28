@@ -5,6 +5,7 @@ const API_URL = 'https://api.giphy.com/v1/gifs/search';
 // Get DOM Elements
 const searchForm = document.getElementById('search-form');
 const searchInput = document.getElementById('search-input');
+const searchBtn = document.getElementById('search-btn');
 const resultsSection = document.getElementById('results');
 const statusMessage = document.getElementById('status-message');
 
@@ -25,12 +26,14 @@ searchForm.addEventListener('submit', function(e) {
 
 // Function to search GIFs
 function searchGifs(query) {
+    searchBtn.disabled = true;
+    searchBtn.textContent = 'Searching...';
     // Show loading message
-    showStatus('Loading GIFs...');
+    showStatus('Loading GIFs...', 'loading');
     clearResults();
 
     // Build API URL with parameters
-    const url = `${API_URL}?api_key=${API_KEY}&q=${query}&limit=12&rating=g`;
+    const url = `${API_URL}?api_key=${API_KEY}&q=${query}&limit=12`;
 
     // Make API request
     fetch(url)
@@ -41,7 +44,11 @@ function searchGifs(query) {
         })
         .catch(error => {
             console.error('Error fetching data:', error);
-            showStatus('Error fetching GIFs. Please try again.');
+            showStatus('Error fetching GIFs. Please try again.', 'error');
+        })
+        .finally(() => {
+            searchBtn.disabled = false;
+            searchBtn.textContent = 'Search';
         });
 }
 
@@ -50,11 +57,11 @@ function displayGifs(gifs) {
     clearResults();
 
     if (gifs.length === 0) {
-        statusMessage.textContent = 'No results found. Try a different search.';
+        showStatus('No GIFs found. Try a different search.', 'error');
         return;
     }
 
-    showStatus(`Found ${gifs.length} GIFs`);
+    showStatus(`Found ${gifs.length} GIFs`, 'success');
 
     // Create grid container
     const gridContainer = document.createElement('div');
@@ -77,6 +84,7 @@ function displayGifs(gifs) {
         const img = document.createElement('img');
         img.src = gifUrl;
         img.alt = gifTitle;
+        img.loading = 'lazy';
 
         // Append elements
         gifItem.appendChild(img);
@@ -88,11 +96,19 @@ function displayGifs(gifs) {
 }
 
 // Function to show status messages
-function showStatus(message) {
+function showStatus(message, type = '') {
     statusMessage.textContent = message;
+    statusMessage.className = type;
 }
 
 // Function to clear results
 function clearResults() {
     resultsSection.innerHTML = '';
 }
+
+// Clear status message when user starts typing
+searchInput.addEventListener('input', function() {
+    if (statusMessage.textContent) {
+        showStatus('');
+    }
+});
