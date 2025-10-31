@@ -30,6 +30,17 @@
                             required
                         >
                         <button type="submit" id="search-btn">Search</button>
+
+                        <!-- Top Pagination -->
+                        <div class="inline-pagination" id="inline-pagination" style="display: none;">
+                            <button type="button" class="page-arrow" id="prev-arrow" disabled>
+                                <span>⇦</span>
+                            </button>
+                            <span class="page-number" id="page-number"></span>
+                            <button type="button" class="page-arrow" id="next-arrow" disabled>
+                                <span>⇨</span>
+                            </button>
+                        </div>
                     </div>
                 </form>
             </section>
@@ -41,6 +52,15 @@
             <section id="results" class="results-section">
             <!-- GIFs will be displayed here -->
             </section>
+
+            <!-- Bottom Pagination -->
+             <section class="bottom-pagination-section" id="bottom-pagination-section" style="display: none;">
+                <div class="pagination">
+                    <button type="button" class="pagination-btn" id="prev-btn-bottom">Previous</button>
+                    <span class="page-info" id="page-info-bottom">Page 1 of 1</span>
+                    <button type="button" class="pagination-btn" id="next-btn-bottom">Next</button>
+                </div>
+             </section>
         </main>
 
         <footer>

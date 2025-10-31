@@ -30,7 +30,7 @@ body {
   color: #9147ff;
   margin-bottom: 10px;
   font-family: "Monoton", cursive;
-  letter-spacing: 3px;
+  letter-spacing: 5px;
 }
 .container header p {
   font-size: 2rem;
@@ -43,8 +43,9 @@ body {
 .search-section #search-form .search-container {
   display: flex;
   gap: 10px;
-  max-width: 600px;
+  max-width: 800px;
   margin: 0 auto;
+  align-items: center;
 }
 .search-section #search-form .search-container #search-input {
   flex: 1;
@@ -82,6 +83,46 @@ body {
 }
 .search-section #search-form .search-container #search-btn:active {
   transform: scale(0.98);
+}
+.search-section #search-form .search-container .inline-pagination {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 0 10px;
+  flex-shrink: 0;
+}
+.search-section #search-form .search-container .inline-pagination .page-arrow {
+  width: 40px;
+  height: 40px;
+  background-color: #2a2a2a;
+  border: 2px solid #9147ff;
+  border-radius: 5px;
+  color: #ffffff;
+  font-size: 1.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+.search-section #search-form .search-container .inline-pagination .page-arrow:hover:not(:disabled) {
+  background-color: #9147ff;
+  transform: scale(1.1);
+}
+.search-section #search-form .search-container .inline-pagination .page-arrow:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+  border-color: #cccccc;
+}
+.search-section #search-form .search-container .inline-pagination .page-arrow span {
+  font-size: 1.2rem;
+  line-height: 1;
+}
+.search-section #search-form .search-container .inline-pagination .page-arrow .page-number {
+  color: #ffffff;
+  font-size: 1rem;
+  font-weight: 600;
+  min-width: 30px;
+  text-align: center;
 }
 
 .status-section {
@@ -155,13 +196,10 @@ body {
   aspect-ratio: 1/1;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 320px) {
   .col-3 {
-    flex: 0 0 calc(50% - 10px);
-    max-width: calc(50% - 10px);
-  }
-  .gif-item:nth-child(n+5) {
-    display: none;
+    flex: 0 0 100%;
+    max-width: 100%;
   }
   .container header {
     margin-bottom: 5px;
@@ -177,11 +215,13 @@ body {
     margin-bottom: 5px;
   }
   .search-section #search-form .search-container {
-    flex-direction: row;
+    flex-wrap: wrap;
+    max-width: 100%;
   }
   .search-section #search-form .search-container #search-input {
     flex: 1;
     width: auto;
+    min-width: 0;
   }
   .search-section #search-form .search-container #search-btn {
     width: 50px;
@@ -203,6 +243,66 @@ body {
     background-size: contain;
     filter: brightness(0) invert(1);
   }
+  .search-section #search-form .search-container .inline-pagination {
+    width: 100%;
+    justify-content: center;
+    padding: 0;
+    margin-top: 10px;
+  }
+}
+@media (min-width: 321px) and (max-width: 768px) {
+  .col-3 {
+    flex: 0 0 calc(50% - 10px);
+    max-width: calc(50% - 10px);
+  }
+  .container header {
+    margin-bottom: 5px;
+  }
+  .container header h1 {
+    font-size: 2rem;
+    letter-spacing: 2px;
+  }
+  .container header p {
+    font-size: 1rem;
+  }
+  .search-section {
+    margin-bottom: 5px;
+  }
+  .search-section #search-form .search-container {
+    flex-wrap: wrap;
+    max-width: 100%;
+  }
+  .search-section #search-form .search-container #search-input {
+    flex: 1;
+    width: auto;
+    min-width: 0;
+  }
+  .search-section #search-form .search-container #search-btn {
+    width: 50px;
+    height: 50px;
+    padding: 0;
+    font-size: 0;
+    position: relative;
+    flex-shrink: 0;
+  }
+  .search-section #search-form .search-container #search-btn::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 1.5rem;
+    height: 1.5rem;
+    background: url("../images/magnifying-glass.svg") no-repeat center center;
+    background-size: contain;
+    filter: brightness(0) invert(1);
+  }
+  .search-section #search-form .search-container .inline-pagination {
+    width: 100%;
+    justify-content: center;
+    padding: 0;
+    margin-top: 10px;
+  }
 }
 @media (min-width: 769px) and (max-width: 1024px) {
   .col-3 {
@@ -210,15 +310,65 @@ body {
     max-width: calc(33.333% - 10px);
   }
 }
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  margin-top: 40px;
+  padding: 20px 0;
+}
+.pagination .pagination-btn {
+  padding: 10px 20px;
+  background-color: #9147ff;
+  color: #ffffff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+.pagination .pagination-btn:hover:not(:disabled) {
+  background-color: rgb(114.5108695652, 20, 255);
+  transform: translateY(-2px);
+}
+.pagination .pagination-btn:disabled {
+  background-color: #2a2a2a;
+  color: #cccccc;
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+.pagination .page-info {
+  color: #ffffff;
+  font-size: 1rem;
+  font-weight: 500;
+  min-width: 120px;
+  text-align: center;
+}
+
+@media (max-width: 768px) {
+  .pagination {
+    gap: 10px;
+  }
+  .pagination .pagination-btn {
+    padding: 8px 16px;
+    font-size: 0.9rem;
+  }
+  .pagination .page-info {
+    font-size: 0.9rem;
+    min-width: 100px;
+  }
+}
 footer {
   text-align: center;
   padding: 30px 0;
   margin-top: auto;
-  border-top: 1px solid #2a2a2a;
+  border-top: 1px solid #9147ff;
 }
 footer p {
   color: #cccccc;
-  font-size: 0.9rem;
+  font-size: 1.2rem;
 }
 footer p a {
   color: #9147ff;
